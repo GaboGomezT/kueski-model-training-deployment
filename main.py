@@ -82,6 +82,7 @@ if __name__ == "__main__":
 
     print(f"Filling null values with 0")
     cust_df = df.copy()
+    cust_df.drop('loan_date',axis='columns', inplace=True)
     cust_df.fillna(0, inplace=True)
 
     model = train_model(cust_df)
