@@ -1,10 +1,8 @@
-ARG IMAGE_VARIANT=buster
-ARG PYTHON_VERSION=3.9.8
+FROM python:3.9.8-buster
 
-FROM python:${PYTHON_VERSION}-${IMAGE_VARIANT} AS py3
-
+COPY main.py /src/main.py
 COPY requirements.txt requirements.txt
-ENV STAGE=dev
+ENV STAGE=prod
 
 RUN pip install -r requirements.txt
 RUN apt update
@@ -14,3 +12,5 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 RUN unzip awscliv2.zip
 RUN ./aws/install
 WORKDIR /src
+
+CMD ["python", "main.py"]

@@ -17,11 +17,11 @@ from sklearn.metrics import (
 
 from sklearn.ensemble import RandomForestClassifier
 
-BUCKET_NAME = "kueski-ml-system"
-FEATURES_KEY = "feature_store/2021/11/28/train_model_pyspark.parquet.gzip"
-FEATURES = "train_model_pyspark.parquet.gzip"
-MODEL_KEY = "models/2021/11/28/model_risk.joblib"
-MODEL = "model_risk.joblib"
+BUCKET_NAME = getenv("BUCKET_NAME")
+FEATURES_KEY = getenv("FEATURES_KEY")
+FEATURES = getenv("FEATURES")
+MODEL_KEY = getenv("MODEL_KEY")
+MODEL = getenv("MODEL")
 DEV: bool = True if getenv("STAGE", None) == "dev" else False
 
 
